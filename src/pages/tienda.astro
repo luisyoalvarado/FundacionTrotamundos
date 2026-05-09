@@ -48,267 +48,187 @@ const schemaMarkup = JSON.stringify({
     <!-- Retaining original classes to inherit your global style.css layout -->
     <section class="internal-hero tienda-bg">
         <h1>Tienda <span class="highlight">Oficial</span></h1>
-        <p>Conoce la historia detrás de la misión. Tu lectura construye el futuro de un niño.</p>
+        <p>Tu lectura construye el futuro de un niño.</p>
     </section>
 
-    <!-- E-COMMERCE MAIN CONTAINER -->
-    <main class="store-container">
+    <!-- COMPACT E-COMMERCE CONTAINER -->
+    <main class="simple-store-container">
         
-        <!-- PRODUCT HERO BOX -->
-        <!-- Modern, interactive product card with grid layout -->
-        <article class="product-card">
+        <!-- STANDARD COMPACT PRODUCT CARD -->
+        <article class="compact-product-card">
             
-            <!-- PRODUCT VISUAL / IMAGE GALLERY -->
-            <div class="product-visual">
-                <div class="image-wrapper">
-                    <img 
-                        src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
-                        alt="Portada del libro: Lo que guardo en mi maleta" 
-                        loading="lazy"
-                    />
-                </div>
+            <!-- PRODUCT IMAGE HEADER -->
+            <div class="card-image-header">
+                <img 
+                    src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
+                    alt="Portada del libro: Lo que guardo en mi maleta" 
+                    loading="lazy"
+                />
             </div>
 
-            <!-- PRODUCT INFORMATION & CHECKOUT -->
-            <div class="product-info">
-                <span class="product-badge">Libro Oficial</span>
+            <!-- PRODUCT ESSENTIAL INFO -->
+            <div class="card-body">
+                <span class="category-badge">Libro Oficial</span>
                 <h2 class="product-title">Lo que guardo en mi maleta</h2>
+                <div class="price-tag">$29.00</div>
+
+                <!-- SIMPLIFIED IMPACT BADGE WITH ANIMATION -->
+                <div class="impact-badge">
+                    <i class="fas fa-heart"></i>
+                    <span><strong><span class="animate-counter" data-target="100">0</span>% de las ganancias</strong> donadas</span>
+                </div>
+
+                <!-- DIRECT STRIPE CHECKOUT -->
+                <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-stripe-checkout">
+                    <span>Comprar ahora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
                 
-                <div class="product-description">
-                    <p>Una colección de anécdotas e imágenes que recoge experiencias transformadoras vividas por El Trotamundos en su gesta humanitaria y de servicio por veintiocho países alrededor del mundo.</p>
-                    <p>Al leerlo, sentirás que eres parte de cada instante vivido por este personaje en su misión de transformar el mundo un niño a la vez.</p>
-                </div>
-
-                <!-- VALUE PROPOSITION FEATURES -->
-                <ul class="product-features">
-                    <li>
-                        <i class="fas fa-check-circle feature-icon blue-icon"></i> 
-                        <span>Memorias de 28 países recorridos.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle feature-icon blue-icon"></i> 
-                        <span>Fotografías exclusivas de la fundación.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-heart feature-icon red-icon"></i> 
-                        <!-- ANIMATED NUMBER COUNTER INJECTION -->
-                        <span><strong><span class="animate-counter" data-target="100">0</span>% de las ganancias</strong> apoyan nuestros proyectos.</span>
-                    </li>
-                </ul>
-
-                <!-- CALL TO ACTION & CHECKOUT AREA -->
-                <div class="checkout-section">
-                    <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-checkout">
-                        <span class="btn-text">
-                            <i class="fas fa-shopping-basket"></i> 
-                            Comprar Libro
-                        </span>
-                        <span class="btn-price">$29.00</span>
-                    </a>
-                    
-                    <!-- UPDATED SHIPPING NOTE FROM HTML -->
-                    <p class="shipping-note">
-                        <i class="fas fa-truck-fast"></i> 
-                        Tarifa fija de $5.00 para envíos estándar a 🇵🇷 y 🇺🇸
-                    </p>
-                </div>
+                <!-- NEW SHIPPING INCLUDED NOTE -->
+                <p class="shipping-included-note">
+                    <i class="fas fa-box-open"></i> 
+                    Manejo y envío a 🇵🇷 y 🇺🇸 incluido en el monto total.
+                </p>
             </div>
         </article>
+
     </main>
 </Layout>
 
 <!-- SCOPED COMPONENT STYLES -->
-<!-- These styles only apply to this specific Astro page, keeping global CSS clean -->
+<!-- Minimalist, modern e-commerce styling optimized for conversion -->
 <style>
-    /* MAIN WRAPPER SETTINGS */
-    .store-container {
-        max-width: 1050px;
-        margin: 5rem auto;
-        padding: 0 1.5rem;
+    /* CONTAINER CENTERING */
+    .simple-store-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 1.5rem;
+        background-color: #fafafa; /* Soft background to make the card pop */
     }
 
-    /* MODERN PRODUCT CARD (HERO BOX) */
-    .product-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
+    /* COMPACT CARD STYLING */
+    .compact-product-card {
         background: #ffffff;
-        padding: 3rem;
+        width: 100%;
+        max-width: 360px; /* Standard online store item width */
         border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.04);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* HOVER ACTION FOR THE ENTIRE CARD */
-    .product-card:hover {
+    .compact-product-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
 
-    /* PRODUCT IMAGE STYLING */
-    .product-visual {
+    /* IMAGE AREA */
+    .card-image-header {
+        width: 100%;
+        background: #f0f0f0;
+        padding: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .image-wrapper {
-        width: 100%;
-        max-width: 420px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    }
-
-    .image-wrapper img {
-        width: 100%;
+    .card-image-header img {
+        width: 180px; /* Smaller, standard book render */
         height: auto;
-        display: block;
-        transition: transform 0.5s ease;
+        border-radius: 4px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.4s ease;
     }
 
-    /* HOVER ACTION FOR THE IMAGE (SUBTLE ZOOM) */
-    .image-wrapper:hover img {
+    .compact-product-card:hover .card-image-header img {
         transform: scale(1.05);
     }
 
-    /* TYPOGRAPHY & LAYOUT FOR PRODUCT INFO */
-    .product-info {
+    /* CARD CONTENT AREA */
+    .card-body {
+        padding: 2rem 1.5rem;
+        text-align: center;
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
-    .product-badge {
-        display: inline-block;
-        font-size: 0.85rem;
+    .category-badge {
+        font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         font-weight: 700;
-        color: #4facfe;
-        margin-bottom: 0.8rem;
+        color: #666;
+        margin-bottom: 0.5rem;
     }
 
     .product-title {
-        font-size: 2.4rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: #1a1a1a;
-        margin-bottom: 1.2rem;
-        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
     }
 
-    .product-description p {
-        color: #555;
-        line-height: 1.7;
-        font-size: 1.05rem;
-        margin-bottom: 1rem;
-    }
-
-    /* FEATURES LIST STYLING */
-    .product-features {
-        list-style: none;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-        background: #f8f9fa;
-        border-radius: 12px;
-        border: 1px solid #eaeaea;
-    }
-
-    .product-features li {
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        font-size: 1.05rem;
-        color: #333;
-    }
-
-    .product-features li:last-child {
-        margin-bottom: 0;
-    }
-
-    .feature-icon {
-        font-size: 1.2rem;
-        min-width: 24px;
-        text-align: center;
-    }
-
-    .blue-icon { color: #4facfe; }
-    .red-icon { color: #ff6b6b; }
-
-    /* CHECKOUT BUTTON & CONTAINER */
-    .checkout-section {
-        margin-top: 1rem;
-    }
-
-    .btn-checkout {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.2rem 2rem;
-        background: #1a1a1a;
-        color: #ffffff;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 1.15rem;
-        font-weight: 600;
-        transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    }
-
-    /* HOVER ACTION FOR THE BUY BUTTON */
-    .btn-checkout:hover {
-        background: #333333;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        color: #ffffff; /* Ensures link color stays white in Astro */
-    }
-
-    .btn-price {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        padding-left: 20px;
+    .price-tag {
+        font-size: 1.6rem;
         font-weight: 800;
-        font-size: 1.25rem;
+        color: #222;
+        margin-bottom: 1.5rem;
     }
 
-    .shipping-note {
-        margin-top: 1.2rem;
-        color: #666;
-        font-size: 0.95rem;
-        text-align: center;
+    /* IMPACT HIGHLIGHT */
+    .impact-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff0f0;
+        color: #d93838;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+    }
+
+    /* STRIPE CHECKOUT BUTTON */
+    .btn-stripe-checkout {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        font-weight: 500;
+        gap: 10px;
+        width: 100%;
+        padding: 1rem;
+        background: #1a1a1a;
+        color: #ffffff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.05rem;
+        font-weight: 600;
+        transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    /* RESPONSIVE DESIGN RULES */
-    @media (max-width: 900px) {
-        .product-card {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            padding: 2rem;
-        }
+    .btn-stripe-checkout:hover {
+        background: #000000;
+        transform: translateY(-2px);
+    }
 
-        .product-title {
-            font-size: 2rem;
-        }
+    /* SHIPPING TEXT */
+    .shipping-included-note {
+        margin-top: 1rem;
+        color: #777;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 6px;
+    }
 
-        .btn-checkout {
-            flex-direction: column;
-            gap: 15px;
-            text-align: center;
-        }
-
-        .btn-price {
-            border-left: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-left: 0;
-            padding-top: 15px;
-            width: 100%;
-        }
+    .shipping-included-note i {
+        margin-top: 3px;
+        color: #4facfe;
     }
 </style>
 
