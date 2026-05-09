@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Bloqueo manual de entrenamiento de IA
+User-agent: GPTBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+
 Sitemap: https://www.fundaciontrotamundos.org/sitemap-index.xml
