@@ -9,7 +9,8 @@ const pageDescription = "Adquiere el libro 'Lo que guardo en mi maleta' y apoya 
 const siteUrl = "https://fundaciontrotamundos.org/tienda";
 const ogImage = "https://fundaciontrotamundos.org/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg";
 
-// GEO SCHEMA MARKUP: Product & Offer data for AI and Search Engines
+// GEO SCHEMA MARKUP
+// Product & Offer data for AI and Search Engines
 const schemaMarkup = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Product",
@@ -44,53 +45,324 @@ const schemaMarkup = JSON.stringify({
         <!-- HERO SECTION -->
         <!-- Introductory banner for the store page -->
         <section class="internal-hero tienda-bg">
-            <h1>Tienda <span class="highlight">Oficial</span></h1>
-            <p>Conoce la historia detrás de la misión. Tu lectura construye el futuro de un niño.</p>
+            <div class="hero-content">
+                <h1>Tienda <span class="highlight">Oficial</span></h1>
+                <p>Conoce la historia detrás de la misión. Tu lectura construye el futuro de un niño.</p>
+            </div>
         </section>
 
         <!-- PRODUCT CATALOG -->
-        <!-- Main container for displaying products and checkout links utilizing modern hover effects -->
-        <div class="modern-store-container hero-box" style="margin: 3rem auto; max-width: 1000px;">
-            <div class="store-catalog">
+        <!-- Compact, modern container utilizing CSS Grid for perfect distribution -->
+        <section class="modern-store-container">
+            <div class="hero-box product-card-compact">
                 
-                <article class="product-card-unified" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+                <!-- PRODUCT IMAGE STAGE -->
+                <!-- Gives the product a defined visual space to prevent disproportion -->
+                <div class="product-stage">
+                    <img 
+                        src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
+                        alt="Portada del libro: Lo que guardo en mi maleta por El Trotamundos" 
+                        class="product-image"
+                    />
+                </div>
+
+                <!-- PRODUCT DETAILS & CHECKOUT AREA -->
+                <!-- Structured for readability and conversion optimization -->
+                <div class="product-info-compact">
+                    <h2>Lo que guardo en mi maleta</h2>
                     
-                    <!-- PRODUCT IMAGE AREA -->
-                    <div class="product-visual">
-                        <div class="product-book-image" style="text-align: center;">
-                            <!-- Updated image source to the new SEO-friendly filename -->
-                            <img src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" alt="Portada del libro: Lo que guardo en mi maleta por El Trotamundos" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-                        </div>
+                    <div class="product-description">
+                        <p>Una colección de anécdotas e imágenes que recoge experiencias transformadoras vividas por El Trotamundos en su gesta humanitaria y de servicio alrededor del mundo.</p>
+                        <p>Al leerlo, sentirás que eres parte de cada instante vivido por este personaje en su misión de transformar el mundo un niño a la vez.</p>
                     </div>
 
-                    <!-- PRODUCT DETAILS & CHECKOUT AREA -->
-                    <div class="product-info">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary);">Lo que guardo en mi maleta</h2>
-                        <p style="color: #4a4a4a; margin-bottom: 1rem; line-height: 1.6;">Una colección de anécdotas e imágenes que recoge experiencias transformadoras vividas por El Trotamundos en su gesta humanitaria y de servicio alrededor del mundo.</p>
-                        <p style="color: #4a4a4a; margin-bottom: 1.5rem; line-height: 1.6;">Al leerlo, sentirás que eres parte de cada instante vivido por este personaje en su misión de transformar el mundo un niño a la vez.</p>
+                    <!-- FEATURE LIST -->
+                    <ul class="product-feature-list">
+                        <li>
+                            <i class="fas fa-check-circle icon-accent"></i> 
+                            <span>Memorias de 28 países recorridos.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle icon-accent"></i> 
+                            <span>Fotografías exclusivas de la fundación.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart icon-heart"></i> 
+                            <span><strong><span class="animate-counter" data-target="100">0</span>% de las ganancias</strong> apoyan nuestros proyectos.</span>
+                        </li>
+                    </ul>
 
-                        <!-- FEATURE LIST WITH ANIMATED COUNTER -->
-                        <ul class="product-feature-list" style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <span>Memorias de <span class="animate-counter" data-target="28" style="font-size: 1.2rem; display: inline;">0</span> países recorridos.</span></li>
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <span>Fotografías exclusivas de la fundación.</span></li>
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-heart" style="color: #ff6b6b;"></i> <span><strong>100% de las ganancias</strong> apoyan nuestros proyectos sociales.</span></li>
-                        </ul>
-
-                        <!-- STRIPE CHECKOUT INTEGRATION -->
-                        <div class="checkout-box" style="padding-top: 1rem; border-top: 1px solid #eee;">
-                            <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: space-between; padding: 15px 30px; width: 100%; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; box-sizing: border-box;" target="_blank">
-                                <span><i class="fas fa-shopping-basket" style="margin-right: 10px;"></i> Comprar Libro</span>
-                                <span style="border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; margin-left: 15px;">$29.00</span>
-                            </a>
-                            
-                            <p class="shipping-note-modern" style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
-                                <i class="fas fa-truck-fast"></i> Tarifa fija de $5.00 para envíos estándar a PR y US.
-                            </p>
+                    <!-- STRIPE CHECKOUT INTEGRATION -->
+                    <div class="checkout-box">
+                        <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-buy-modern" target="_blank" rel="noopener noreferrer">
+                            <span class="btn-text"><i class="fas fa-shopping-basket"></i> Comprar Libro</span>
+                            <span class="btn-price">$29.00</span>
+                        </a>
+                        
+                        <!-- CLEAR PRICING NOTE -->
+                        <div class="shipping-note">
+                            <i class="fas fa-box-open"></i> 
+                            <span>El precio de $29.00 <strong>incluye</strong> la tarifa de envío estándar a Puerto Rico y Estados Unidos.</span>
                         </div>
                     </div>
+                </div>
 
-                </article>
             </div>
-        </div>
+        </section>
     </main>
 </Layout>
+
+<!-- ASTRO SCOPED CSS -->
+<!-- Ensures styles only apply to this specific page, preventing global CSS conflicts -->
+<style>
+    /* Hero Section Setup */
+    .internal-hero {
+        text-align: center;
+        padding: 3.5rem 1rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .internal-hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        color: #222;
+    }
+
+    .highlight {
+        color: #ff6b6b; /* Accent color */
+    }
+
+    .internal-hero p {
+        color: #666;
+        font-size: 1.05rem;
+    }
+
+    /* Container and Grid Layout */
+    .modern-store-container {
+        max-width: 850px; /* More compact width */
+        margin: 3.5rem auto;
+        padding: 0 1.5rem;
+    }
+
+    /* Compact Card Design */
+    .product-card-compact {
+        display: grid;
+        grid-template-columns: 40% 60%; /* Better text-to-image ratio */
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        overflow: hidden; /* Ensures stage background stays inside corners */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+
+    .product-card-compact:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Image Stage Styling */
+    .product-stage {
+        background: #f4f6f8; /* Soft background block for the image */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem;
+    }
+
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        transition: transform 0.3s ease;
+    }
+
+    .product-stage:hover .product-image {
+        transform: scale(1.03);
+    }
+
+    /* Typography and Info Area */
+    .product-info-compact {
+        padding: 2.5rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .product-info-compact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+        color: #222;
+        line-height: 1.2;
+    }
+
+    .product-description p {
+        color: #555;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* Feature List Distribution */
+    .product-feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .product-feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.95rem;
+        color: #444;
+    }
+
+    .icon-accent {
+        color: #4facfe;
+        margin-top: 3px;
+    }
+
+    .icon-heart {
+        color: #ff6b6b;
+        margin-top: 3px;
+    }
+
+    .animate-counter {
+        font-weight: 700;
+        color: #222;
+    }
+
+    /* Checkout Box Setup */
+    .checkout-box {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eaeaea;
+    }
+
+    .btn-buy-modern {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #222;
+        color: #ffffff;
+        padding: 0.9rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.05rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-buy-modern:hover {
+        background-color: #4facfe;
+        transform: translateY(-2px);
+        color: #ffffff;
+    }
+
+    .btn-text i {
+        margin-right: 8px;
+    }
+
+    .btn-price {
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        padding-left: 1rem;
+        font-weight: 800;
+    }
+
+    .shipping-note {
+        margin-top: 1.2rem;
+        font-size: 0.85rem;
+        color: #666;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        line-height: 1.4;
+        background: #f8f9fa;
+        padding: 10px 12px;
+        border-radius: 6px;
+    }
+
+    .shipping-note i {
+        color: #4facfe;
+        margin-top: 2px;
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 768px) {
+        .product-card-compact {
+            grid-template-columns: 1fr;
+        }
+
+        .product-stage {
+            padding: 2rem;
+        }
+
+        .product-info-compact {
+            padding: 2rem 1.5rem;
+        }
+
+        .product-info-compact h2 {
+            font-size: 1.6rem;
+        }
+
+        .btn-buy-modern {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .btn-price {
+            border-left: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-left: 0;
+            padding-top: 10px;
+            width: 100%;
+        }
+    }
+</style>
+
+<!-- CLIENT-SIDE SCRIPTS -->
+<!-- Interactive logic for the animated number counter -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll<HTMLElement>('.animate-counter');
+        const speed = 30; // The lower the slower
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +(counter.getAttribute('data-target') || '0');
+                    const count = +counter.innerText;
+                    
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc).toString();
+                        setTimeout(updateCount, 40);
+                    } else {
+                        counter.innerText = target.toString();
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation only when the section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => observer.observe(counter));
+    });
+</script>
