@@ -2,18 +2,15 @@
 // src/pages/tienda.astro
 
 // IMPORT LAYOUT
-// Ensure the path to your layout file is correct based on your project structure
 import Layout from '../layouts/Layout.astro';
 
 // SEO & METADATA CONFIGURATION
-// Define specific metadata for the store page to ensure good social sharing
 const pageTitle = "Tienda Oficial | Fundación Trotamundos";
 const pageDescription = "Adquiere el libro 'Lo que guardo en mi maleta' y apoya la misión de El Trotamundos. Cada compra transforma vidas.";
 const siteUrl = "https://fundaciontrotamundos.org/tienda";
 const ogImage = "https://fundaciontrotamundos.org/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg";
 
 // GEO SCHEMA MARKUP (JSON-LD)
-// Product & Offer data injected for AI search engines and rich snippets
 const schemaMarkup = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Product",
@@ -41,250 +38,217 @@ const schemaMarkup = JSON.stringify({
 <Layout title={pageTitle} description={pageDescription} image={ogImage}>
     
     <!-- STRUCTURED DATA INJECTION -->
-    <!-- Adds the JSON-LD schema to the head of the document for SEO/GEO -->
     <script type="application/ld+json" set:html={schemaMarkup}></script>
 
     <!-- PAGE HERO SECTION -->
-    <!-- Retaining original classes to inherit your global style.css layout -->
     <section class="internal-hero tienda-bg">
         <h1>Tienda <span class="highlight">Oficial</span></h1>
         <p>Tu lectura construye el futuro de un niño.</p>
     </section>
 
-    <!-- E-COMMERCE GRID CONTAINER -->
-    <!-- Designed to hold multiple items in the future (2 per row on desktop) -->
-    <main class="store-grid-container">
+    <!-- E-COMMERCE CATALOG CONTAINER -->
+    <!-- Max-width is restricted so the 2-column layout looks appropriately sized, not stretched -->
+    <main class="store-catalog-container">
         
-        <div class="product-grid">
-            <!-- HORIZONTAL PRODUCT CARD -->
-            <article class="product-card-horizontal">
+        <!-- PRODUCT GRID (2 columns on desktop, 1 on mobile) -->
+        <div class="ecommerce-grid">
+            
+            <!-- STANDARD VERTICAL PRODUCT CARD -->
+            <article class="standard-product-card">
                 
-                <!-- PRODUCT IMAGE (LEFT SIDE) -->
-                <div class="card-image-box">
+                <!-- SQUARE IMAGE CONTAINER -->
+                <!-- Ensures image is always fully visible without cropping -->
+                <div class="product-image-square">
                     <img 
                         src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
-                        alt="Portada del libro: Lo que guardo en mi maleta" 
+                        alt="Libro: Lo que guardo en mi maleta" 
                         loading="lazy"
                     />
                 </div>
 
-                <!-- PRODUCT INFO (RIGHT SIDE) -->
-                <div class="card-content-box">
+                <!-- COMPACT PRODUCT DETAILS -->
+                <div class="product-details">
                     <h2 class="product-title">Libro: Lo que guardo en mi maleta</h2>
                     
-                    <p class="short-description">
-                        Descubre una colección inspiradora de anécdotas y fotografías que documentan la misión transformadora de El Trotamundos a través de 28 países.
+                    <p class="product-short-desc">
+                        Descubre anécdotas y fotografías que documentan la misión de El Trotamundos a través de 28 países.
                     </p>
 
-                    <div class="price-row">
-                        <span class="price-tag">$29.00</span>
+                    <div class="product-price">$29.00</div>
+
+                    <div class="philanthropy-text">
+                        Todas las ganancias (<span class="animate-counter" data-target="100">0</span>%) son donadas a nuestros programas de filantropía.
                     </div>
 
-                    <!-- IMPACT HIGHLIGHT WITH ANIMATED COUNTER -->
-                    <div class="philanthropy-notice">
-                        <i class="fas fa-heart"></i>
-                        <span>El <strong><span class="animate-counter" data-target="100">0</span>%</strong> de las ganancias son donadas a nuestros programas de filantropía.</span>
-                    </div>
-
-                    <!-- DIRECT STRIPE CHECKOUT -->
-                    <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-primary-buy">
-                        <span>Comprar ahora</span>
-                        <i class="fas fa-shopping-bag"></i>
+                    <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-buy-simple">
+                        Comprar
                     </a>
                     
-                    <!-- SHIPPING INFO -->
-                    <p class="shipping-info">
-                        <i class="fas fa-box-open"></i> 
+                    <!-- MINIMAL SHIPPING TEXT -->
+                    <p class="shipping-text">
                         Manejo y envío a 🇵🇷 y 🇺🇸 incluido en el precio.
                     </p>
                 </div>
             </article>
-            
-            <!-- Future products can be added here and will automatically align next to the first one on desktop -->
-        </div>
 
+            <!-- Example of a second empty card to visualize the 2-column layout. -->
+            <!-- You can delete this or replace it with future products -->
+            <!-- 
+            <article class="standard-product-card" style="opacity: 0.5; pointer-events: none;">
+                <div class="product-image-square" style="background: #eee;"></div>
+                <div class="product-details">
+                    <h2 class="product-title">Próximo Producto</h2>
+                    <p class="product-short-desc">Próximamente disponible en nuestra tienda oficial.</p>
+                </div>
+            </article>
+            -->
+            
+        </div>
     </main>
 </Layout>
 
 <!-- SCOPED COMPONENT STYLES -->
-<!-- Responsive, minimalist, and dynamic styling for horizontal cards -->
 <style>
-    /* MAIN CONTAINER & GRID SYSTEM */
-    .store-grid-container {
-        max-width: 1200px;
+    /* CATALOG CONTAINER */
+    .store-catalog-container {
+        max-width: 800px; /* Restricts width so the 2 columns look proportional */
         margin: 0 auto;
-        padding: 5rem 1.5rem;
-        background-color: #fafafa;
+        padding: 4rem 1.5rem;
     }
 
-    /* GRID LAYOUT: 2 columns on desktop, 1 on mobile */
-    .product-grid {
+    /* 2-COLUMN GRID SYSTEM */
+    .ecommerce-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns as requested */
+        gap: 2rem;
     }
 
-    /* HORIZONTAL CARD STYLING */
-    .product-card-horizontal {
-        display: flex;
-        flex-direction: row;
+    /* STANDARD VERTICAL CARD */
+    .standard-product-card {
         background: #ffffff;
-        border-radius: 12px;
+        border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.04);
+        border: 1px solid #eaeaea;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product-card-horizontal:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    /* IMAGE CONTAINER (Fills the space entirely) */
-    .card-image-box {
-        flex: 0 0 40%; /* Takes up 40% of the card width */
-        background: #f4f4f4;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .card-image-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensures the square image covers the area perfectly */
-        display: block;
-        transition: transform 0.5s ease;
-    }
-
-    .product-card-horizontal:hover .card-image-box img {
-        transform: scale(1.05);
-    }
-
-    /* CONTENT CONTAINER */
-    .card-content-box {
-        flex: 1; /* Takes up the remaining 60% */
-        padding: 2rem;
         display: flex;
         flex-direction: column;
+    }
+
+    /* Interactive hover effect */
+    .standard-product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* STRICT SQUARE IMAGE CONTAINER */
+    .product-image-square {
+        width: 100%;
+        aspect-ratio: 1 / 1; /* Forces a perfect square */
+        background-color: #fcfcfc;
+        padding: 1.5rem; /* Padding so the book doesn't touch the edges */
+        display: flex;
+        align-items: center;
         justify-content: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .product-image-square img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* CRITICAL: Resizes the image to fit entirely inside the square */
+        transition: transform 0.4s ease;
+    }
+
+    /* Subtle image zoom on hover */
+    .standard-product-card:hover .product-image-square img {
+        transform: scale(1.04);
+    }
+
+    /* COMPACT TYPOGRAPHY & LAYOUT */
+    .product-details {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Pushes button to bottom if descriptions vary in length */
     }
 
     .product-title {
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: #1a1a1a;
-        margin-bottom: 0.8rem;
-        line-height: 1.2;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
     }
 
-    .short-description {
-        font-size: 0.95rem;
-        color: #555;
-        line-height: 1.5;
-        margin-bottom: 1.2rem;
-    }
-
-    .price-row {
-        margin-bottom: 1.2rem;
-    }
-
-    .price-tag {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #1a1a1a;
-    }
-
-    /* PHILANTHROPY NOTICE */
-    .philanthropy-notice {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        background: #f8f9fa;
-        padding: 0.8rem 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #ff6b6b;
+    .product-short-desc {
         font-size: 0.85rem;
-        color: #444;
-        margin-bottom: 1.5rem;
-        line-height: 1.4;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 1rem;
     }
 
-    .philanthropy-notice i {
-        color: #ff6b6b;
-        margin-top: 3px;
+    .product-price {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #000;
+        margin-bottom: 1rem;
     }
 
-    /* BUY BUTTON */
-    .btn-primary-buy {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        padding: 1rem;
-        background: #1a1a1a;
-        color: #ffffff;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 1.05rem;
-        font-weight: 600;
-        transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn-primary-buy:hover {
-        background: #000000;
-        transform: translateY(-2px);
-    }
-
-    /* SHIPPING INFO */
-    .shipping-info {
-        margin-top: 1rem;
-        color: #777;
+    .philanthropy-text {
         font-size: 0.8rem;
+        color: #444;
+        background: #fdf5f5;
+        padding: 0.6rem;
+        border-radius: 6px;
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+        border-left: 2px solid #ff6b6b;
+    }
+
+    /* SIMPLE BUY BUTTON */
+    .btn-buy-simple {
+        display: block;
+        width: 100%;
         text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
+        background: #111;
+        color: #fff;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        margin-top: auto; /* Aligns button to bottom of card */
     }
 
-    .shipping-info i {
-        color: #4facfe;
+    .btn-buy-simple:hover {
+        background: #333;
     }
 
-    /* MOBILE RESPONSIVE DESIGN */
-    /* Transforms the horizontal card into a standard vertical card on smaller screens */
-    @media (max-width: 768px) {
-        .product-grid {
-            grid-template-columns: 1fr; /* 1 column on mobile */
-        }
+    /* MINIMAL SHIPPING TEXT */
+    .shipping-text {
+        font-size: 0.75rem;
+        color: #888;
+        text-align: center;
+        margin-top: 0.8rem;
+        line-height: 1.3;
+    }
 
-        .product-card-horizontal {
-            flex-direction: column; /* Stacks image on top of text */
+    /* MOBILE RESPONSIVE LAYOUT */
+    @media (max-width: 600px) {
+        .ecommerce-grid {
+            grid-template-columns: 1fr; /* Switch to 1 column on small screens */
         }
-
-        .card-image-box {
-            flex: auto;
-            width: 100%;
-            aspect-ratio: 1 / 1; /* Maintains the square shape of the image on mobile */
-        }
-
-        .card-content-box {
-            padding: 1.5rem;
-        }
-
-        .product-title {
-            font-size: 1.5rem;
+        
+        .store-catalog-container {
+            max-width: 400px; /* Constrain mobile card size so it doesn't get excessively large */
         }
     }
 </style>
 
 <!-- CLIENT-SIDE JAVASCRIPT -->
-<!-- Handles dynamic interactions that run on the user's browser -->
+<!-- Animated counter logic for the philanthropy text -->
 <script>
-    // Intersection Observer for animated number counters
-    // Triggers the count-up animation when the element scrolls into view
     document.addEventListener("DOMContentLoaded", () => {
         const counters = document.querySelectorAll('.animate-counter');
         
@@ -295,9 +259,8 @@ const schemaMarkup = JSON.stringify({
                     const target = +counter.getAttribute('data-target')!;
                     let count = 0;
                     
-                    // Recursive function to animate the number smoothly
                     const updateCount = () => {
-                        const inc = target / 20; // Controls the speed of the counter
+                        const inc = target / 20; 
                         if (count < target) {
                             count += inc;
                             counter.innerText = Math.ceil(count).toString();
@@ -307,12 +270,10 @@ const schemaMarkup = JSON.stringify({
                         }
                     };
                     updateCount();
-                    
-                    // Stop observing once the animation completes
                     observer.unobserve(counter);
                 }
             });
-        }, { threshold: 0.5 }); // Triggers when 50% of the element is visible
+        }, { threshold: 0.5 });
 
         counters.forEach(counter => observer.observe(counter));
     });
