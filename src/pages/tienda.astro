@@ -1,0 +1,96 @@
+---
+// src/pages/tienda.astro
+import Layout from '../layouts/Layout.astro';
+
+// SERVER-SIDE FRONTMATTER
+// Define SEO metadata for the store
+const pageTitle = "Tienda Oficial";
+const pageDescription = "Adquiere el libro 'Lo que guardo en mi maleta' y apoya la misión de El Trotamundos. Cada compra transforma la vida de niños a través del arte y la educación.";
+const siteUrl = "https://fundaciontrotamundos.org/tienda";
+const ogImage = "https://fundaciontrotamundos.org/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg";
+
+// GEO SCHEMA MARKUP: Product & Offer data for AI and Search Engines
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Libro: Lo que guardo en mi maleta",
+  "image": ogImage,
+  "description": pageDescription,
+  "brand": {
+    "@type": "Organization",
+    "name": "Fundación Trotamundos"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": siteUrl,
+    "priceCurrency": "USD",
+    "price": "29.00",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Fundación Trotamundos"
+    }
+  }
+});
+---
+
+<Layout title={pageTitle} description={pageDescription} image={ogImage}>
+    
+    <!-- GEO STRUCTURED DATA INJECTION -->
+    <!-- Injects the product schema directly into the document for web crawlers -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <main>
+        <!-- HERO SECTION -->
+        <!-- Introductory banner for the store page -->
+        <section class="internal-hero tienda-bg">
+            <h1>Tienda <span class="highlight">Oficial</span></h1>
+            <p>Conoce la historia detrás de la misión. Tu lectura construye el futuro de un niño.</p>
+        </section>
+
+        <!-- PRODUCT CATALOG -->
+        <!-- Main container for displaying products and checkout links utilizing modern hover effects -->
+        <div class="modern-store-container hero-box" style="margin: 3rem auto; max-width: 1000px;">
+            <div class="store-catalog">
+                
+                <article class="product-card-unified" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+                    
+                    <!-- PRODUCT IMAGE AREA -->
+                    <div class="product-visual">
+                        <div class="product-book-image" style="text-align: center;">
+                            <!-- Updated image source to the new SEO-friendly filename -->
+                            <img src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" alt="Portada del libro: Lo que guardo en mi maleta por El Trotamundos" style="max-width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
+                        </div>
+                    </div>
+
+                    <!-- PRODUCT DETAILS & CHECKOUT AREA -->
+                    <div class="product-info">
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary);">Lo que guardo en mi maleta</h2>
+                        <p style="color: #4a4a4a; margin-bottom: 1rem; line-height: 1.6;">Una colección de anécdotas e imágenes que recoge experiencias transformadoras vividas por El Trotamundos en su gesta humanitaria y de servicio alrededor del mundo.</p>
+                        <p style="color: #4a4a4a; margin-bottom: 1.5rem; line-height: 1.6;">Al leerlo, sentirás que eres parte de cada instante vivido por este personaje en su misión de transformar el mundo un niño a la vez.</p>
+
+                        <!-- FEATURE LIST WITH ANIMATED COUNTER -->
+                        <ul class="product-feature-list" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <span>Memorias de <span class="animate-counter" data-target="28" style="font-size: 1.2rem; display: inline;">0</span> países recorridos.</span></li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--color-accent);"></i> <span>Fotografías exclusivas de la fundación.</span></li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-heart" style="color: #ff6b6b;"></i> <span><strong>100% de las ganancias</strong> apoyan nuestros proyectos sociales.</span></li>
+                        </ul>
+
+                        <!-- STRIPE CHECKOUT INTEGRATION -->
+                        <div class="checkout-box" style="padding-top: 1rem; border-top: 1px solid #eee;">
+                            <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: space-between; padding: 15px 30px; width: 100%; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; box-sizing: border-box;" target="_blank">
+                                <span><i class="fas fa-shopping-basket" style="margin-right: 10px;"></i> Comprar Libro</span>
+                                <span style="border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; margin-left: 15px;">$29.00</span>
+                            </a>
+                            
+                            <p class="shipping-note-modern" style="margin-top: 1rem; font-size: 0.85rem; color: #666; text-align: center;">
+                                <i class="fas fa-truck-fast"></i> Tarifa fija de $5.00 para envíos estándar a PR y US.
+                            </p>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </main>
+</Layout>

@@ -1,0 +1,125 @@
+---
+// src/pages/trayectoria.astro
+import Layout from '../layouts/Layout.astro';
+
+// SERVER-SIDE FRONTMATTER
+const pageTitle = "Nuestra Trayectoria";
+const pageDescription = "Conoce la historia y trayectoria de Fundación Trotamundos. Más de dos décadas transformando realidades y construyendo un mundo mejor para la niñez.";
+const siteUrl = "https://fundaciontrotamundos.org/trayectoria";
+const ogImage = "https://fundaciontrotamundos.org/assets/img/trayectoria-historia-fundacion-trotamundos.png";
+
+// GEO SCHEMA MARKUP: Optimized for "About" pages and NGO history
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": pageTitle,
+  "description": pageDescription,
+  "url": siteUrl,
+  "mainEntity": {
+    "@type": "NGO",
+    "name": "Fundación Trotamundos",
+    "foundingDate": "2008",
+    "description": "Educar y transformar la vida de la niñez a través de las artes, promoviendo valores universales y brindando ayuda humanitaria directa.",
+    "url": "https://fundaciontrotamundos.org/"
+  }
+});
+---
+
+<Layout title={pageTitle} description={pageDescription} image={ogImage}>
+    
+    <!-- GEO STRUCTURED DATA INJECTION -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="internal-hero">
+            <h1>Nuestra <span class="highlight">Historia</span></h1>
+            <p>Más de dos décadas recorriendo el mundo para sembrar esperanza, empatía, servicio y oportunidades reales.</p>
+        </section>
+
+        <!-- MISSION & VISION SECTION -->
+        <section class="mission-vision-grid">
+            <article class="mv-card">
+                <i class="fas fa-seedling"></i>
+                <h2>Nuestra Misión</h2>
+                <p>Educar y transformar la vida de la niñez a través de las artes, promoviendo valores universales y brindando ayuda humanitaria directa en comunidades de alta necesidad.</p>
+            </article>
+            <article class="mv-card">
+                <i class="fas fa-eye"></i>
+                <h2>Nuestra Visión</h2>
+                <p>Ser un motor global de esperanza donde cada niño, sin importar su origen, tenga acceso a sus necesidades básicas, artículos escolares, vivienda digna y educación creativa en un entorno de paz.</p>
+            </article>
+        </section>
+
+        <!-- TIMELINE SECTION -->
+        <section class="history-timeline">
+            <div class="section-header">
+                <span class="section-tag">Impacto Global</span>
+                <h2>Nuestros Hitos</h2>
+            </div>
+
+            <!-- TIMELINE ITEMS -->
+            <article class="timeline-item">
+                <div class="timeline-img-box">
+                    <img src="/assets/img/mision-cusco-peru-ninez-andina.jpg" alt="El inicio de la Fundación Trotamundos en el 2008 en Cusco, Perú" loading="lazy">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2008</span>
+                    <h3>El Origen de la Misión</h3>
+                    <p>La Fundación Trotamundos nace en 2008 luego de la primera misión de El Trotamundos en Cusco, Perú, donde llevó arte y música a la niñez andina junto al Dr. Vargas Vidot. Allí ocurre el encuentro con el pequeño Inca y con el hambre, lo que inspiró para seguir sembrando sanación, educación y esperanza alrededor del mundo.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-img-box">
+                    <img src="/assets/img/resiliencia-comunitaria-puerto-rico.jpg" alt="Trabajo comunitario y resiliencia en Puerto Rico" loading="lazy">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2008 - Actualidad</span>
+                    <h3>Labor en Puerto Rico</h3>
+                    <p>Más allá del escenario, nuestra labor en la isla se ha consolidado como un pilar de resiliencia comunitaria. A través de la Fundación, lideramos brigadas de sanación emocional en hospitales, centros de oncología, programas de educación en valores para la televisión pública y misiones críticas de distribución de suministros tras desastres naturales, transformando el arte en una herramienta estratégica de bienestar social para las familias puertorriqueñas.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-img-box">
+                    <img src="/assets/img/mision-humanitaria-terremoto-haiti.jpeg" alt="Misión humanitaria tras el terremoto en Haití" loading="lazy">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2010 - Actualidad</span>
+                    <h3>Misión Haití</h3>
+                    <p>Llevamos alegría, música y suministros de primera necesidad tras el devastador terremoto, dando inicio a más de dieciséis años de labor humanitaria a nivel internacional. Uno de los documentales del Trotamundos, Haití Canta, documenta este esfuerzo y puede disfrutarse en la plataforma YouTube.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-img-box">
+                    <img src="/assets/img/medalla-sor-isolina-ferre-servicio-projimo.jpg" alt="Entrega de la Medalla Sor Isolina Ferré a Fundación Trotamundos" loading="lazy">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2013</span>
+                    <h3>Medalla Sor Isolina Ferré</h3>
+                    <p>Recibimos el reconocimiento máximo otorgado por la Cámara de Representantes de Puerto Rico a la excelencia en el servicio al prójimo y la dedicación a la filantropía comunitaria.</p>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-img-box">
+                    <img src="/assets/img/construccion-viviendas-proyecto-banica.jpg" alt="Construcción de viviendas en el Proyecto Bánica, República Dominicana" loading="lazy">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2013 - Actualidad</span>
+                    <h3>Proyecto Bánica</h3>
+                    <p>A través de la Fundación, logramos la construcción y entrega de 29 viviendas de cemento seguro y pozos de agua en República Dominicana, cambiando permanentemente el destino de familias y comunidades enteras.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-banner">
+            <h2>La historia continúa contigo</h2>
+            <p>Nuestro próximo hito es llevar vivienda y educación a más comunidades necesitadas. Únete a nuestra red de apoyo.</p>
+            <a href="/donaciones" class="btn-outline">Haz una donación mensual</a>
+        </section>
+    </main>
+</Layout>

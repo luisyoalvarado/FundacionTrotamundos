@@ -1,0 +1,35 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-col-left">
+            <div>
+                <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 5px;">Fundación Trotamundos</p>
+                <p style="opacity: 0.8; font-size: 0.95rem;">Transformando el mundo un niño a la vez.</p>
+                <p style="opacity: 0.8; font-size: 0.95rem;"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> San Juan, Puerto Rico</p>
+            </div>
+            <div class="footer-socials-new">
+                <a href="https://facebook.com/ElTrotamun2" target="_blank" class="share-btn fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/eltrotamundos" target="_blank" class="share-btn ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/eltrotamun2" target="_blank" class="share-btn yt" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col-right">
+            <div class="footer-commercial-notice-new">
+                <p style="margin-bottom: 5px;"><strong>¿Buscas los shows de El Trotamundos?</strong></p>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">Para contrataciones de espectáculos y animaciones, visita nuestra página oficial de talento: <br>
+                <a href="https://www.eltrotamundos.com" target="_blank">www.eltrotamundos.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="footer-divider">
+    
+    <div class="footer-credits">
+        <p>&copy; {currentYear} Fundación Trotamundos. Todos los derechos reservados.</p>
+    </div>
+</footer>

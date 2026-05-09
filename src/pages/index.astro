@@ -1,0 +1,174 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// SEO & Content Variables
+const pageTitle = "Inicio";
+const pageDescription = "Organización sin fines de lucro transformando la niñez a través del arte, educación y acción social en Puerto Rico y El Pilón de Bánica.";
+const siteUrl = "https://fundaciontrotamundos.org/";
+
+// Structured Data for Google (NGO Entity)
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "Fundación Trotamundos",
+  "url": siteUrl,
+  "logo": "https://fundaciontrotamundos.org/assets/img/logo.png",
+  "description": pageDescription,
+  "location": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Juan",
+      "addressCountry": "PR"
+    }
+  },
+  "sameAs": [
+    "https://facebook.com/ElTrotamun2",
+    "https://instagram.com/eltrotamundos",
+    "https://youtube.com/eltrotamun2"
+  ]
+});
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+    <Header slot="header" />
+
+    <!-- Schema Injection -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <!-- Original CSS Links (Keep these if you have a separate style.css file) -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <main>
+        <section class="home-hero">
+            <div style="font-size: 2.5em; font-weight: 700; margin-bottom: 0.2em;">Fundación Trotamundos</div>
+            <h1><span class="highlight">Transformando el mundo</span> #UnNiñoALaVez</h1>
+            <p>Utilizando las diferentes ramas del arte, el servicio al prójimo y el amor, brindamos esperanza, educación creativa y hogares seguros a la niñez.</p>
+            <div class="hero-actions">
+                <a href="/donaciones" class="btn-primary">Apoyar la Misión</a>
+                <a href="/trayectoria" class="btn-solid-orange">Conoce nuestra historia</a>
+            </div>
+        </section>
+
+        <section class="home-impact">
+            <div class="impact-grid" id="impact-section">
+                <div class="impact-stat">
+                    <span class="number animate-counter" data-target="17">0</span>
+                    <span class="label">Años de Servicio</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="number animate-counter" data-target="28">0</span>
+                    <span class="label">Países Visitados</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="number animate-counter" data-target="29">0</span>
+                    <span class="label">Casas Construidas</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="modern-section" style="background-color: #fcfcfc;">
+            <div class="section-header-centered">
+                <span class="section-tag">Nuestro Impacto</span>
+                <h2>Proyectos Activos</h2>
+                <p style="color: #666; max-width: 600px; margin: 15px auto 0;">Tu generosidad hace posible mantener vivos estos programas que transforman el presente de cientos de niños.</p>
+            </div>
+
+            <div class="modern-grid">
+                <article class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="/assets/img/ninos-pilon-banica-republica-dominicana.jpg" alt="Niños recibiendo apoyo del Programa de Padrinos en República Dominicana">
+                    </div>
+                    <div class="card-content">
+                        <h3>Programa de Padrinos</h3>
+                        <p>Proveemos alimentos nutritivos, ropa digna y materiales escolares esenciales a niños en comunidades de extrema necesidad.</p>
+                        <a href="/padrinos" class="card-cta">Conviértete en Padrino <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="/assets/img/construccion-casas-seguras-comunidades-necesidad.jpg" alt="Construcción de infraestructura y hogares seguros">
+                    </div>
+                    <div class="card-content">
+                        <h3>Infraestructura Segura</h3>
+                        <p>Diseñamos y construimos casas de cemento y pozos de agua potable en zonas fronterizas vulnerables.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="central-cta" style="display: flex; justify-content: center; width: 100%; margin-top: 50px;">
+                <a href="/donaciones" class="btn-primary" style="font-size: 1.1rem; padding: 15px 40px; display: inline-flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-heart"></i> Apoya Nuestros Proyectos
+                </a>
+            </div>
+        </section>
+
+        <section class="modern-section">
+            <div class="section-header-centered">
+                <span class="section-tag">Únete a la familia</span>
+                <h2>Involúcrate con la Fundación Trotamundos</h2>
+                <p style="color: #666; max-width: 600px; margin: 15px auto 0;">Un movimiento como éste no solo necesita fondos, también buscamos manos, voces y variados talentos. Descubre cómo puedes ser parte de la historia.</p>
+            </div>
+
+            <div class="modern-grid">
+                <article class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="/assets/img/charlas-educativas-conferencias-fundacion.jpg" alt="Conferencias y charlas educativas de la Fundación">
+                    </div>
+                    <div class="card-content">
+                        <h3>Charlas y Conferencias</h3>
+                        <p>Lleva nuestro mensaje de esperanza y valores a tu escuela, corporación o grupo comunitario.</p>
+                        <a href="/contacto" class="card-cta">Solicitar Información <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="/assets/img/voluntariado-internacional-misiones-ayuda.jpg" alt="Voluntarios colaborando en una misión internacional">
+                    </div>
+                    <div class="card-content">
+                        <h3>Voluntariado</h3>
+                        <p>Dona tu tiempo y habilidades, ya sea en nuestras misiones locales o internacionales, o apóyanos de forma virtual.</p>
+                        <a href="/contacto" class="card-cta">Quiero ser Voluntario <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="/assets/img/alianzas-corporativas-responsabilidad-social.jpg" alt="Alianzas y colaboraciones con empresas responsables">
+                    </div>
+                    <div class="card-content">
+                        <h3>Auspicios y Alianzas</h3>
+                        <p>Unimos fuerzas con empresas y marcas que desean dejar una huella social a través de programas de responsabilidad (CSR).</p>
+                        <a href="/contacto" class="card-cta">Convertirme en Aliado <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <Footer slot="footer" />
+</Layout>
+
+<script>
+    // Scroll Intersection Observer for Animated Counters
+    const observerOptions = { threshold: 0.5 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Ensure logic execution is handed off to the global script in Layout.astro
+                // This prevents duplicate execution if scrolled multiple times
+                entry.target.classList.add('animation-triggered');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const impactSection = document.getElementById('impact-section');
+    if(impactSection) observer.observe(impactSection);
+</script>

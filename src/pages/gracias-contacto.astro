@@ -1,0 +1,59 @@
+---
+// src/pages/gracias-contacto.astro
+import Layout from '../layouts/Layout.astro';
+
+// SERVER-SIDE FRONTMATTER
+const pageTitle = "¡Mensaje Recibido! | Fundación Trotamundos";
+const pageDescription = "Hemos recibido tu mensaje exitosamente. Pronto nos pondremos en contacto contigo.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+    
+    <!-- TECHNICAL SEO: Prevent indexing for form success pages -->
+    <!-- This script dynamically adds the noindex tag to the head to keep analytics clean -->
+    <script is:inline>
+        let meta = document.createElement('meta');
+        meta.name = "robots";
+        meta.content = "noindex";
+        document.head.appendChild(meta);
+    </script>
+
+    <main class="thanks-container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        
+        <!-- SUCCESS CARD -->
+        <!-- Utilized global 'hero-box' for modern UI consistency -->
+        <article class="thanks-card hero-box" style="text-align: center; max-width: 600px; width: 100%; border-top: 5px solid var(--color-primary);">
+            
+            <div class="thanks-icon" style="font-size: 4rem; color: var(--color-primary); margin-bottom: 1rem;">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            
+            <h1 style="margin-bottom: 1rem; color: var(--color-primary);">¡Mensaje Recibido!</h1>
+            
+            <p style="margin-bottom: 2.5rem; color: #555; line-height: 1.6; font-size: 1.1rem;">
+                Gracias por comunicarte con la <strong>Fundación Trotamundos</strong>. 
+                Hemos recibido tu solicitud exitosamente y nos emociona la posibilidad de sumar esfuerzos por la niñez. 
+                Nuestro equipo evaluará tu mensaje y se pondrá en contacto contigo a la brevedad posible.
+            </p>
+            
+            <div class="thanks-actions">
+                <a href="/" class="btn-primary" style="margin-bottom: 3rem; display: inline-block; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                    Volver al Inicio
+                </a>
+                
+                <div style="border-top: 1px solid #eee; padding-top: 2rem;">
+                    <h2 class="share-text" style="font-weight: 600; color: var(--color-dark); margin-bottom: 20px; font-size: 1.1rem;">
+                        Mientras tanto, conoce más de nuestra labor:
+                    </h2>
+                    
+                    <div class="footer-socials-new" style="justify-content: center; gap: 2rem; display: flex; font-size: 1.5rem;">
+                        <a href="https://facebook.com/ElTrotamun2" target="_blank" class="share-btn fb" aria-label="Facebook" style="color: var(--color-primary); transition: opacity 0.3s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/eltrotamundos" target="_blank" class="share-btn ig" aria-label="Instagram" style="color: var(--color-primary); transition: opacity 0.3s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/eltrotamun2" target="_blank" class="share-btn yt" aria-label="YouTube" style="color: var(--color-primary); transition: opacity 0.3s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </main>
+</Layout>

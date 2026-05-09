@@ -1,0 +1,165 @@
+---
+// src/pages/contacto.astro
+import Layout from '../layouts/Layout.astro';
+
+// SERVER-SIDE FRONTMATTER
+const pageTitle = "Contacto y Colaboraciones";
+const pageDescription = "Comunícate con la Fundación Trotamundos para charlas, voluntariado, auspicios o colaboraciones filantrópicas.";
+const siteUrl = "https://fundaciontrotamundos.org/contacto";
+const ogImage = "https://fundaciontrotamundos.org/assets/img/contacto-colaboraciones-fundacion-trotamundos.jpg";
+
+// GEO SCHEMA MARKUP: Optimized for Contact Pages to feed AI directly
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": pageTitle,
+  "description": pageDescription,
+  "url": siteUrl,
+  "mainEntity": {
+    "@type": "NGO",
+    "name": "Fundación Trotamundos",
+    "telephone": "+1-787-638-6048",
+    "email": "info@fundaciontrotamundos.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Juan",
+      "addressRegion": "PR",
+      "addressCountry": "US"
+    }
+  }
+});
+---
+
+<Layout title={pageTitle} description={pageDescription} image={ogImage}>
+    
+    <!-- GEO STRUCTURED DATA INJECTION -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="internal-hero contacto-bg">
+            <h1>Contacto y <span class="highlight">Colaboraciones</span></h1>
+            <p>"Creo en el poder transformador de las artes y lo uso para llevar esperanza a los niños del mundo entero." — El Trotamundos</p>
+        </section>
+
+        <!-- CONTACT INFORMATION & FORM CONTAINER -->
+        <div class="contact-container">
+            <div class="contact-grid">
+                
+                <!-- CONTACT INFO CARD -->
+                <article class="contact-card">
+                    <div class="info-header">
+                        <div class="info-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h2>Conecta con la Fundación</h2>
+                        <p>Comunícate con nosotros para unirte a nuestros esfuerzos filantrópicos, coordinar charlas inspiracionales para tu escuela o compañía o explorar alianzas estratégicas. Cada presentación apoya nuestros esfuerzos y fondos para seguir llegando a más lugares.</p>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:7876386048">787-638-6048</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@fundaciontrotamundos.org">info@fundaciontrotamundos.org</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>San Juan, Puerto Rico</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-socials">
+                        <span>Síguenos en las redes</span>
+                        <a href="https://facebook.com/ElTrotamun2" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/eltrotamundos" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/eltrotamun2" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </article>
+
+                <!-- CONTACT FORM CARD -->
+                <article class="contact-card">
+                    <h2>Envíanos un mensaje</h2>
+                    <p style="margin-bottom: 2rem;">Completa el formulario y nos pondremos en contacto contigo lo antes posible para sumar esfuerzos.</p>
+                    
+                    <!-- DUAL SUBMISSION FORM (Brevo + Formspree) -->
+                    <form id="contactForm" action="https://ae1e7357.sibforms.com/serve/MUIFACQeB6vXB0I_NDsY6MtfwW7WbT2E6-t9GGZdoEdXAG3l7CS37oEzdB6glVcMHPkMPLaWgfJAR6QRy4wDwG8V_yDbg9mkmn8-6HAsP8uX1DmCZoDZ8iqBklZ5c9SetkT_SwyeNvxkBrL8Fvl4CNSqO_XARfwitX8ESXzxRf8duENnR3b-0K6CGgOUAk9hCem7O8WPiS0X6tOz0Q==" method="POST" class="contact-form">
+                        
+                        <div class="form-group">
+                            <input type="text" name="NOMBRE_ORGANIZACION" placeholder="Nombre completo u Organización" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" name="EMAIL" placeholder="Correo electrónico" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select name="INTERESDECONTACTO" required>
+                                <option value="" disabled selected>¿En qué estás interesado?</option>
+                                <option value="1">Charlas</option>
+                                <option value="2">Voluntariado</option>
+                                <option value="3">Auspicios</option>
+                                <option value="4">Colaboraciones</option>
+                                <option value="5">Otro Asunto</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea name="MENSAJE" placeholder="Escribe tu mensaje o propuesta aquí..." required></textarea>
+                        </div>
+                        
+                        <input type="hidden" name="email_address_check" value="">
+                        <input type="hidden" name="locale" value="es">
+                        <input type="hidden" name="html_type" value="simple">
+                        
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </article>
+
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<!-- CLIENT-SIDE SCRIPTS: Form Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Dual Form Submission Logic (Formspree + Brevo)
+        const contactForm = document.getElementById('contactForm');
+        
+        if(contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                // Prevent default submission temporarily
+                e.preventDefault(); 
+                
+                const submitBtn = this.querySelector('.btn-submit') as HTMLButtonElement;
+                if(submitBtn) {
+                    submitBtn.innerText = 'Enviando...';
+                    submitBtn.disabled = true;
+                }
+
+                // Gather form data to send to Formspree
+                const formData = new FormData(this as HTMLFormElement);
+
+                try {
+                    // Background POST request to Formspree endpoint
+                    await fetch('https://formspree.io/f/xlgwabdq', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    console.log('Background notification sent successfully.');
+                } catch (error) {
+                    console.error('Background notification failed, continuing to primary system...', error);
+                }
+
+                // Once secondary system is notified, continue native submission
+                (this as HTMLFormElement).submit();
+            });
+        }
+    });
+</script>

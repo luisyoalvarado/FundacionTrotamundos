@@ -1,0 +1,246 @@
+---
+// src/pages/padrinos.astro
+import Layout from '../layouts/Layout.astro';
+
+// Dynamic SEO and GEO variables for the Padrinos program
+const pageTitle = "Programa de Padrinos y Madrinas";
+const pageDescription = "Únete al Programa de Padrinos del Pilón de Bánica. Provee alimentos nutritivos, ropa y materiales escolares a niños en necesidad.";
+const siteUrl = "https://fundaciontrotamundos.org/padrinos";
+// Updated to the new SEO path and filename
+const ogImage = "https://fundaciontrotamundos.org/assets/img/nina-programa-padrinos-pilon-banica.jpg";
+
+// GEO SCHEMA MARKUP FOR AI ENGINES (Defines a charitable donation action)
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "DonationAction",
+  "name": "Programa de Padrinos - El Pilón de Bánica",
+  "description": pageDescription,
+  "url": siteUrl,
+  "recipient": {
+    "@type": "NGO",
+    "name": "Fundación Trotamundos",
+    "url": "https://fundaciontrotamundos.org/"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "El Pilón de Bánica",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "DO"
+    }
+  }
+});
+---
+
+<Layout title={pageTitle} description={pageDescription} image={ogImage}>
+    
+    <!-- GEO STRUCTURED DATA INJECTION -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="internal-hero padrinos-bg">
+            <h1>Programa de <span class="highlight">Padrinos</span></h1>
+            <p>Tu compromiso mensual transforma el futuro de los niños en El Pilón de Bánica.</p>
+        </section>
+
+        <!-- ANALYTICAL STATS SECTION WITH ANIMATED COUNTERS -->
+        <section style="padding: 0 5%;">
+            <div class="analytical-grid">
+                
+                <div class="analytical-card">
+                    <div class="analytical-icon-box"><i class="fas fa-users"></i></div>
+                    <div class="analytical-info">
+                        <!-- Updated to use the global 'animate-counter' class from Layout -->
+                        <div style="font-size: 1.5rem; font-weight: bold; font-family: 'Montserrat', sans-serif;"><span class="animate-counter" data-target="120">0</span>+</div>
+                        <p>Niños Impactados</p>
+                        <div class="visual-bar-bg"><div class="visual-bar-fill" style="width: 100%; background: var(--color-accent);"></div></div>
+                    </div>
+                </div>
+
+                <div class="analytical-card">
+                    <div class="analytical-icon-box" style="background: rgba(45, 90, 39, 0.1); color: var(--color-primary);"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="analytical-info">
+                        <div style="font-size: 1.5rem; font-weight: bold; font-family: 'Montserrat', sans-serif;">$<span class="animate-counter" data-target="22">0</span></div>
+                        <p>Aportación Sugerida</p>
+                        <div class="visual-bar-bg"><div class="visual-bar-fill" style="width: 100%; background: var(--color-primary);"></div></div>
+                    </div>
+                </div>
+
+                <div class="analytical-card">
+                    <div class="analytical-icon-box" style="background: rgba(26, 58, 95, 0.1); color: var(--color-dark);"><i class="far fa-calendar-alt"></i></div>
+                    <div class="analytical-info">
+                        <div style="font-size: 1.5rem; font-weight: bold; font-family: 'Montserrat', sans-serif;"><span class="animate-counter" data-target="12">0</span></div>
+                        <p>Meses de Compromiso</p>
+                        <div class="visual-bar-bg"><div class="visual-bar-fill" style="width: 100%; background: var(--color-dark);"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MISSION DETAILS SECTION -->
+        <section class="modern-section" style="padding-top: 60px; padding-bottom: 20px;">
+            <div class="contact-grid" style="align-items: center;">
+                <div>
+                    <span class="section-tag">Nuestra Misión</span>
+                    <h2 style="margin-bottom: 20px;">El Pilón de Bánica: Una Comunidad Llena de Esperanza</h2>
+                    <p style="color: #555; margin-bottom: 15px;">En la República Dominicana se encuentra El Pilón de Bánica, una comunidad donde la falta de infraestructura básica hace que el día a día sea un reto constante.</p>
+                    <p style="color: #555; margin-bottom: 15px;">Al unirte a nosotros, estarás ayudando a cubrir necesidades básicas y suplementar la alimentación de unos 120 niños y niñas de esta comunidad.</p>
+                    <p style="color: #555;">Tu apoyo hará una gran diferencia en su vida diaria, siendo una aportación colectiva que beneficia equitativamente a todos los pequeños del Pilón.</p>
+                </div>
+                
+                <div class="media-placeholder no-zoom">
+                    <!-- Corrected Image Path -->
+                    <img src="/assets/img/nina-programa-padrinos-pilon-banica.jpg" alt="Niña de la comunidad El Pilón de Bánica">
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY IMAGE SECTION -->
+        <section class="modern-section" style="padding-top: 20px; padding-bottom: 40px;">
+            <div class="media-placeholder no-zoom" style="background-color: transparent; border: none; box-shadow: none; min-height: auto;">
+                <!-- Corrected Image Path -->
+                <img src="/assets/img/ninos-beneficiados-ayuda-humanitaria-banica.jpg" alt="Collage de niños beneficiados en El Pilón de Bánica" style="position: relative; object-fit: contain; width: 100%; height: auto; max-height: 720px; border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+            </div>
+        </section>
+
+        <!-- PILLARS OF IMPACT SECTION -->
+        <section class="modern-section" style="background-color: var(--color-bg); padding-top: 60px; padding-bottom: 80px;">
+            <div class="section-header-centered">
+                <span class="section-tag">Impacto Colectivo</span>
+                <h2>Lo que Proveemos</h2>
+            </div>
+            
+            <div class="pillars-2-grid">
+                <div class="pillar-card-small">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Alimentación</h3>
+                    <p>Suplemento nutricional para un sano desarrollo.</p>
+                </div>
+                <div class="pillar-card-small">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Ropa Digna</h3>
+                    <p>Vestimenta adecuada para su protección y estima.</p>
+                </div>
+                <div class="pillar-card-small">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Educación</h3>
+                    <p>Materiales esenciales para su éxito escolar.</p>
+                </div>
+                <div class="pillar-card-small">
+                    <i class="fas fa-gift"></i>
+                    <h3>Actividades</h3>
+                    <p>Cumpleaños y celebraciones grupales que traen alegría.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTION & FORMS SECTION -->
+        <section class="modern-section">
+            <div class="contact-grid">
+                
+                <div class="contact-card" style="padding: 2.5rem; display: flex; flex-direction: column;">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Nuestra Labor en Acción</h2>
+                    <p style="margin-bottom: 1.5rem; color: #555;">Cuando no es posible ir en persona, los líderes comunitarios garantizan que los recursos lleguen directamente a la comunidad.</p>
+                    
+                    <div style="flex-grow: 1; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft);">
+                        <iframe src="https://www.instagram.com/reel/Cl1InmAgORP/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" style="display: block;"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-card" style="padding: 3rem 2.5rem; border-top: 5px solid var(--color-primary);">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <i class="fas fa-hand-holding-heart" style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: 15px;"></i>
+                        <h2 style="color: var(--color-dark); font-size: 1.8rem;">Únete al Programa de Padrinos</h2>
+                        <p style="color: #555; font-size: 0.95rem;">Completa tus datos para comprometerte con una buena causa.</p>
+                    </div>
+                    
+                    <!-- Brevo (Sendinblue) Form Integration -->
+                    <form method="POST" action="https://ae1e7357.sibforms.com/serve/MUIFAIOCkonD2MFxSv01lAH8ltY_P0iHFSVK89IpA-SWiKFLReemC-X5VgBOTA9dMf0L2-VA6Iagsvd167PAeSE9BfC8OxBxVJbo4b46AJYwI9aCkA90O_VzaXLfXdRPiFqsQ4NAhEkC-WbTwDvONZFKRcqs8OUtZIIv8tT6tIW8L7ANWCFuOpPDhqiMLMar0_ywRPzNU9FnxD7JCg==" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="FIRSTNAME" name="FIRSTNAME" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="LASTNAME" name="LASTNAME" placeholder="Apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="EMAIL" name="EMAIL" placeholder="Correo Electrónico" required>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%; padding:15px; margin-top:15px;">
+                            <i class="fas fa-paper-plane" style="margin-right:8px;"></i> Suscribirme como Padrino/Madrina
+                        </button>
+                        <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">Tus datos están seguros y solo se usarán para enviarte noticias del programa.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA DONATION BANNER -->
+        <section class="cta-banner">
+            <h2>Haz tu Donativo</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem;">Dirígete a nuestra página de donaciones para configurar tu pago automático mensual, trimestral o donativo único.</p>
+            
+            <div>
+                <a href="/donaciones" class="btn-solid-orange" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                    <i class="fas fa-heart" style="margin-right: 8px;"></i> Donar
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="modern-section" style="padding-top: 0;">
+            <div class="section-header-centered">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo configuro el pago automático? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Usa el botón de "Donar" para ir a nuestra página de donaciones y utilizar el widget de Givebutter. Selecciona la opción "Mensual", o "Trimestral", elige la cantidad que deseas aportar y asegúrate de marcar el fund (fondo) "Programa de Padrinos". Luego de presionar el botón de continuar, podrás entrar la información de pago de forma segura.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿A quién ayudo exactamente? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Tu aportación es colectiva. Beneficia a los 120 niños del Pilón de manera equitativa, cubriendo sus necesidades de nutrición y educación.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿De cuánto es el compromiso mensual? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Sugerimos una aportación de $22 mensuales, pero puedes donar la cantidad que se ajuste a tu presupuesto. Solicitamos un compromiso mínimo de un año.</div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<!-- CLIENT-SIDE SCRIPTS FOR LOCAL INTERACTIVITY (FAQ) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Interactive FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const ans = q.nextElementSibling as HTMLElement;
+                const icon = q.querySelector('i');
+                
+                // Close all others
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    const htmlEl = el as HTMLElement;
+                    if (htmlEl !== ans) {
+                        htmlEl.style.maxHeight = '';
+                        if (htmlEl.previousElementSibling) {
+                            const prevIcon = htmlEl.previousElementSibling.querySelector('i');
+                            if (prevIcon) prevIcon.className = 'fas fa-plus';
+                        }
+                    }
+                });
+                
+                // Toggle the clicked one
+                if (ans.style.maxHeight) {
+                    ans.style.maxHeight = '';
+                    if (icon) icon.className = 'fas fa-plus';
+                } else {
+                    ans.style.maxHeight = ans.scrollHeight + "px"; 
+                    if (icon) icon.className = 'fas fa-minus';
+                }
+            });
+        });
+    });
+</script>

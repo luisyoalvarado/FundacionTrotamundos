@@ -1,0 +1,57 @@
+---
+// src/components/Header.astro
+// 1. Capture the current URL path to set the 'active' state on the navigation link
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+    <!-- Main Logo linking to homepage -->
+    <a href="/" class="nav-logo">
+        <img src="/assets/img/logo.png" alt="Fundación Trotamundos Logo">
+        <span class="logo-text">Fundación Trotamundos</span>
+    </a>
+    
+    <div class="nav-wrapper">
+        <!-- Mobile menu toggle button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Primary Navigation List -->
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/" class={currentPath === "/" ? "active" : ""}>Inicio</a></li>
+                <li><a href="/padrinos" class={currentPath.includes("/padrinos") ? "active" : ""}>Padrinos</a></li>
+                <li><a href="/trayectoria" class={currentPath.includes("/trayectoria") ? "active" : ""}>Trayectoria</a></li>
+                <li><a href="/tienda" class={currentPath.includes("/tienda") ? "active" : ""}>Tienda</a></li>
+                
+                <!-- NEW: Blog Navigation Item -->
+                <li><a href="/blog" class={currentPath.includes("/blog") ? "active" : ""}>Blog</a></li>
+                
+                <li><a href="/contacto" class={currentPath.includes("/contacto") ? "active" : ""}>Contacto</a></li>
+                <li><a href="/donaciones" class="btn-donate-nav">Donar Ahora</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- CLIENT-SIDE SCRIPTS: Mobile Navigation Logic -->
+<script>
+    // Logic for mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const toggleIcon = mobileToggle ? mobileToggle.querySelector('i') : null;
+
+    if(mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            if(navMenu.classList.contains('active')) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-times');
+            } else {
+                toggleIcon.classList.remove('fa-times');
+                toggleIcon.classList.add('fa-bars');
+            }
+        });
+    }
+</script>

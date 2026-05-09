@@ -1,0 +1,121 @@
+---
+// src/layouts/Layout.astro
+
+// 1. Component Imports
+// We import the global Header and Footer here so they are automatically applied to every page.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// 2. Define the properties (Props) this layout accepts for dynamic SEO
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+// 3. Set default values utilizing the Foundation's official Mission and Vision
+// Absolute URLs are required for Open Graph images to render correctly on WhatsApp/Facebook
+const defaultDescription = "Ayuda humanitaria directa y educación creativa para la niñez en Puerto Rico y El Pilón de Bánica, República Dominicana. Únete a la Fundación Trotamundos.";
+const defaultImage = "https://fundaciontrotamundos.org/assets/img/mision-ayuda.jpg"; 
+
+const {
+  title,
+  description = defaultDescription,
+  image = defaultImage
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/img/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary SEO Strategy -->
+    <title>{title} | Fundación Trotamundos</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Fundación Trotamundos, ayuda humanitaria, El Pilón de Bánica, donaciones Puerto Rico, educación infantil, niñez República Dominicana, artículos escolares" />
+
+    <!-- Open Graph / Social Media Cards (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={`${title} | Fundación Trotamundos`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Fundación Trotamundos" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={`${title} | Fundación Trotamundos`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- GEO Tags (Puerto Rico & Dominican Republic Context) -->
+    <meta name="geo.region" content="PR, DO" />
+    <meta name="geo.placename" content="San Juan, Bánica" />
+
+    <!-- Google Fonts (Minimalist & Modern Typography - Matching your original design) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom Global Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- Google Tag Manager Integration -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MWSTB360R"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8MWSTB360R');
+    </script>
+  </head>
+  <body>
+    <!-- Global Navigation Header -->
+    <Header />
+
+    <!-- Main content injection from individual pages -->
+    <slot />
+
+    <!-- Global Footer -->
+    <Footer />
+
+    <!-- Global Scripts: Interactive Animated Number Counters -->
+    <script>
+      // Initialize the counter animation logic for impact metrics
+      const initCounters = () => {
+        const counters = document.querySelectorAll('.animate-counter');
+        const speed = 200; // Animation speed controller
+
+        counters.forEach(counter => {
+          const updateCount = () => {
+            const target = +counter.getAttribute('data-target')!;
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+              counter.innerText = Math.ceil(count + increment).toString();
+              setTimeout(updateCount, 1);
+            } else {
+              counter.innerText = target.toString();
+            }
+          };
+          updateCount();
+        });
+      };
+
+      // Trigger counters when DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', initCounters);
+    </script>
+  </body>
+</html>

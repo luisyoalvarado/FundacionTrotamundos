@@ -1,0 +1,205 @@
+---
+// src/pages/donaciones.astro
+import Layout from '../layouts/Layout.astro';
+
+// SERVER-SIDE FRONTMATTER
+const pageTitle = "Donar";
+const pageDescription = "Dona hoy a la Fundación Trotamundos. Tu apoyo provee alimentos, educación y hogares seguros en Bánica y comunidades vulnerables. #UnNiñoALaVez";
+const siteUrl = "https://fundaciontrotamundos.org/donaciones";
+const ogImage = "https://fundaciontrotamundos.org/assets/img/donacion-impacto-ninez-vulnerable.jpg";
+
+// GEO SCHEMA MARKUP: Defines a secure Donation Action for AI search engines
+const schemaMarkup = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "name": "Donaciones Fundación Trotamundos",
+  "description": pageDescription,
+  "url": siteUrl,
+  "recipient": {
+    "@type": "NGO",
+    "name": "Fundación Trotamundos",
+    "url": "https://fundaciontrotamundos.org/"
+  },
+  "provider": [
+    {
+      "@type": "Organization",
+      "name": "Givebutter",
+      "url": "https://givebutter.com/"
+    },
+    {
+      "@type": "Organization",
+      "name": "PayPal",
+      "url": "https://paypal.me/eltrotamundos"
+    },
+    {
+      "@type": "Organization",
+      "name": "Venmo",
+      "url": "https://venmo.com/eltrotamundos"
+    }
+  ]
+});
+---
+
+<Layout title={pageTitle} description={pageDescription} image={ogImage}>
+    
+    <!-- EXTERNAL SCRIPTS: Givebutter Integration -->
+    <script is:inline async src="https://widgets.givebutter.com/latest.umd.cjs?acct=JC1elFBgIoKRvgGN&p=other"></script>
+    
+    <!-- GEO STRUCTURED DATA INJECTION -->
+    <script type="application/ld+json" set:html={schemaMarkup}></script>
+
+    <main class="donation-section">
+        
+        <div class="donation-content">
+            <span class="section-tag">Tu apoyo es vital</span>
+            <h1>Un Abrazo que <span class="highlight">Construye Futuro.</span></h1>
+            
+            <p class="donation-intro">
+                Transforma la vida de un niño hoy. Tu donación se convierte en materiales educativos, alimentos y techos seguros para familias vulnerables. Únete a nuestra red de apoyo.
+            </p>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <!-- Updated counter classes to utilize global Layout logic -->
+                    <div class="stat-number animate-counter" data-target="17">0</div>
+                    <div class="stat-label">Años de Misión</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number animate-counter" data-target="28">0</div>
+                    <div class="stat-label">Países Visitados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number animate-counter" data-target="29">0</div>
+                    <div class="stat-label">Casas Construidas</div>
+                </div>
+            </div>
+            
+            <div class="donation-impact-image">
+                <img src="/assets/img/donacion-impacto-ninez-vulnerable.jpg" alt="Impacto de tu donación en la vida de los niños en comunidades vulnerables">
+            </div>
+
+            <div class="testimonial-min">
+                "Gracias al compromiso de donantes recurrentes, hoy 29 familias duermen bajo un techo de cemento seguro. Tu ayuda transforma realidades."
+                <br><br>
+                <strong>— El Trotamundos</strong>
+            </div>
+        </div>
+
+        <div class="donation-form-container">
+            <div class="donation-panel-optimized">
+                <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.4rem; color: var(--color-dark);">Transforma el mundo hoy</h2>
+                
+                <div class="gb-cta">
+                    <p style="color: #555; margin-bottom: 1rem; text-align: center;">Selecciona tu donativo único, mensual o anual de manera rápida y segura.</p>
+                    
+                    <!-- Givebutter Widget Container -->
+                    <div class="givebutter-widget-container" style="min-height: 400px; width: 100%;">
+                        <givebutter-widget id="g63Yxp"></givebutter-widget>
+                    </div>
+
+                    <p class="recurring-nudge">
+                        <i class="fas fa-heart" style="color: #ff6b6b; margin-right: 5px;"></i> Únete a nuestra red de padrinos y crea un impacto real mes a mes.
+                    </p>
+                </div>
+
+                <div class="secondary-methods" style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border-subtle);">
+                    
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h3 style="color: var(--color-dark); font-size: 1.25rem; margin-bottom: 5px;">
+                            <i class="fas fa-hand-holding-usd" style="color: var(--color-accent); margin-right: 8px;"></i> Otras Formas de Aportar
+                        </h3>
+                        <p style="font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin: 0;">
+                            Donativos Singulares y Manuales
+                        </p>
+                    </div>
+                    
+                    <div class="payment-methods-grid">
+                        
+                        <button type="button" id="btn-open-ath" class="btn-payment btn-ath-custom">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <strong>ATH Móvil</strong>
+                                <span class="payment-note" style="margin-top: 2px;">Ver detalles</span>
+                            </div>
+                        </button>
+                        
+                        <p style="font-size: 0.85rem; color: #666; margin-top: -5px; margin-bottom: 15px; grid-column: 1 / -1; text-align: center;">
+                            Busca <strong>/FundacionTrotamundos</strong> en la sección de Donar.
+                        </p>
+
+                        <a href="https://paypal.me/eltrotamundos" target="_blank" class="btn-payment btn-paypal">
+                            <i class="fab fa-paypal"></i>
+                            <strong>PayPal</strong>
+                        </a>
+                        
+                        <a href="https://venmo.com/eltrotamundos" target="_blank" class="btn-payment btn-venmo">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <strong>Venmo</strong>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ATH MOVIL MODAL -->
+    <div id="athModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="btn-close-ath" aria-label="Close Modal">&times;</button>
+            
+            <i class="fas fa-mobile-alt" style="font-size: 3rem; color: var(--color-ath); margin-bottom: 15px;"></i>
+            <h3 style="color: var(--color-dark); margin-bottom: 10px;">Donar por ATH Móvil</h3>
+            <p style="color: #555; font-size: 0.95rem;">Abre tu aplicación de ATH Móvil, presiona el botón de <strong>"Donar"</strong> y busca nuestro pATH oficial:</p>
+            
+            <div class="ath-path-box">
+                /FundacionTrotamundos
+            </div>
+            
+            <div class="qr-placeholder-box" style="background: transparent; border: none; padding: 0;">
+                <img src="/assets/img/codigo-qr-ath-movil-fundacion-trotamundos.jpg" alt="Código QR ATH Móvil de Fundación Trotamundos" style="max-width: 220px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <p style="color: #64748b; font-size: 0.85rem; margin-top: 15px;">O escanea nuestro código directamente desde tu celular.</p>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<!-- CLIENT-SIDE SCRIPTS: Local Modal Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ATH Movil Detection and Modal Logic
+        const athBtn = document.getElementById('btn-open-ath');
+        const athModal = document.getElementById('athModal');
+        const closeBtn = document.getElementById('btn-close-ath');
+
+        // Check if user is on a mobile device for deep linking
+        const isMobileDevice = () => {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        };
+
+        if(athBtn) {
+            athBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (isMobileDevice()) {
+                    window.location.href = "https://pagos.athmovilapp.com/qrCodePayment.html?id=06fd5edb-39d7-47a0-8b7c-4ad50c22b741";
+                } else {
+                    if(athModal) athModal.classList.add('active');
+                }
+            });
+        }
+
+        if(closeBtn && athModal) {
+            closeBtn.addEventListener('click', () => {
+                athModal.classList.remove('active');
+            });
+        }
+
+        // Close modal when clicking outside the content box
+        window.addEventListener('click', (e) => {
+            if (athModal && e.target === athModal) {
+                athModal.classList.remove('active');
+            }
+        });
+    });
+</script>
