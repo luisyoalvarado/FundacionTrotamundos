@@ -51,149 +51,172 @@ const schemaMarkup = JSON.stringify({
         <p>Tu lectura construye el futuro de un niño.</p>
     </section>
 
-    <!-- COMPACT E-COMMERCE CONTAINER -->
-    <main class="simple-store-container">
+    <!-- E-COMMERCE GRID CONTAINER -->
+    <!-- Designed to hold multiple items in the future (2 per row on desktop) -->
+    <main class="store-grid-container">
         
-        <!-- STANDARD COMPACT PRODUCT CARD -->
-        <article class="compact-product-card">
-            
-            <!-- PRODUCT IMAGE HEADER -->
-            <div class="card-image-header">
-                <img 
-                    src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
-                    alt="Portada del libro: Lo que guardo en mi maleta" 
-                    loading="lazy"
-                />
-            </div>
-
-            <!-- PRODUCT ESSENTIAL INFO -->
-            <div class="card-body">
-                <span class="category-badge">Libro Oficial</span>
-                <h2 class="product-title">Lo que guardo en mi maleta</h2>
-                <div class="price-tag">$29.00</div>
-
-                <!-- SIMPLIFIED IMPACT BADGE WITH ANIMATION -->
-                <div class="impact-badge">
-                    <i class="fas fa-heart"></i>
-                    <span><strong><span class="animate-counter" data-target="100">0</span>% de las ganancias</strong> donadas</span>
+        <div class="product-grid">
+            <!-- HORIZONTAL PRODUCT CARD -->
+            <article class="product-card-horizontal">
+                
+                <!-- PRODUCT IMAGE (LEFT SIDE) -->
+                <div class="card-image-box">
+                    <img 
+                        src="/assets/img/libro-lo-que-guardo-en-mi-maleta-el-trotamundos.jpg" 
+                        alt="Portada del libro: Lo que guardo en mi maleta" 
+                        loading="lazy"
+                    />
                 </div>
 
-                <!-- DIRECT STRIPE CHECKOUT -->
-                <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-stripe-checkout">
-                    <span>Comprar ahora</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                
-                <!-- NEW SHIPPING INCLUDED NOTE -->
-                <p class="shipping-included-note">
-                    <i class="fas fa-box-open"></i> 
-                    Manejo y envío a 🇵🇷 y 🇺🇸 incluido en el monto total.
-                </p>
-            </div>
-        </article>
+                <!-- PRODUCT INFO (RIGHT SIDE) -->
+                <div class="card-content-box">
+                    <h2 class="product-title">Libro: Lo que guardo en mi maleta</h2>
+                    
+                    <p class="short-description">
+                        Descubre una colección inspiradora de anécdotas y fotografías que documentan la misión transformadora de El Trotamundos a través de 28 países.
+                    </p>
+
+                    <div class="price-row">
+                        <span class="price-tag">$29.00</span>
+                    </div>
+
+                    <!-- IMPACT HIGHLIGHT WITH ANIMATED COUNTER -->
+                    <div class="philanthropy-notice">
+                        <i class="fas fa-heart"></i>
+                        <span>El <strong><span class="animate-counter" data-target="100">0</span>%</strong> de las ganancias son donadas a nuestros programas de filantropía.</span>
+                    </div>
+
+                    <!-- DIRECT STRIPE CHECKOUT -->
+                    <a href="https://buy.stripe.com/5kQaEXd3Mc1i1DO64t2kw00" class="btn-primary-buy">
+                        <span>Comprar ahora</span>
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                    
+                    <!-- SHIPPING INFO -->
+                    <p class="shipping-info">
+                        <i class="fas fa-box-open"></i> 
+                        Manejo y envío a 🇵🇷 y 🇺🇸 incluido en el precio.
+                    </p>
+                </div>
+            </article>
+            
+            <!-- Future products can be added here and will automatically align next to the first one on desktop -->
+        </div>
 
     </main>
 </Layout>
 
 <!-- SCOPED COMPONENT STYLES -->
-<!-- Minimalist, modern e-commerce styling optimized for conversion -->
+<!-- Responsive, minimalist, and dynamic styling for horizontal cards -->
 <style>
-    /* CONTAINER CENTERING */
-    .simple-store-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    /* MAIN CONTAINER & GRID SYSTEM */
+    .store-grid-container {
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 5rem 1.5rem;
-        background-color: #fafafa; /* Soft background to make the card pop */
+        background-color: #fafafa;
     }
 
-    /* COMPACT CARD STYLING */
-    .compact-product-card {
+    /* GRID LAYOUT: 2 columns on desktop, 1 on mobile */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* HORIZONTAL CARD STYLING */
+    .product-card-horizontal {
+        display: flex;
+        flex-direction: row;
         background: #ffffff;
-        width: 100%;
-        max-width: 360px; /* Standard online store item width */
-        border-radius: 16px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         border: 1px solid rgba(0, 0, 0, 0.04);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .compact-product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    .product-card-horizontal:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     }
 
-    /* IMAGE AREA */
-    .card-image-header {
+    /* IMAGE CONTAINER (Fills the space entirely) */
+    .card-image-box {
+        flex: 0 0 40%; /* Takes up 40% of the card width */
+        background: #f4f4f4;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-image-box img {
         width: 100%;
-        background: #f0f0f0;
-        padding: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 100%;
+        object-fit: cover; /* Ensures the square image covers the area perfectly */
+        display: block;
+        transition: transform 0.5s ease;
     }
 
-    .card-image-header img {
-        width: 180px; /* Smaller, standard book render */
-        height: auto;
-        border-radius: 4px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        transition: transform 0.4s ease;
-    }
-
-    .compact-product-card:hover .card-image-header img {
+    .product-card-horizontal:hover .card-image-box img {
         transform: scale(1.05);
     }
 
-    /* CARD CONTENT AREA */
-    .card-body {
-        padding: 2rem 1.5rem;
-        text-align: center;
+    /* CONTENT CONTAINER */
+    .card-content-box {
+        flex: 1; /* Takes up the remaining 60% */
+        padding: 2rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-    }
-
-    .category-badge {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        color: #666;
-        margin-bottom: 0.5rem;
+        justify-content: center;
     }
 
     .product-title {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
         font-weight: 800;
         color: #1a1a1a;
-        margin-bottom: 0.5rem;
-        line-height: 1.3;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+
+    .short-description {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+    }
+
+    .price-row {
+        margin-bottom: 1.2rem;
     }
 
     .price-tag {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 800;
-        color: #222;
-        margin-bottom: 1.5rem;
+        color: #1a1a1a;
     }
 
-    /* IMPACT HIGHLIGHT */
-    .impact-badge {
+    /* PHILANTHROPY NOTICE */
+    .philanthropy-notice {
         display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #fff0f0;
-        color: #d93838;
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
+        align-items: flex-start;
+        gap: 10px;
+        background: #f8f9fa;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #ff6b6b;
         font-size: 0.85rem;
-        margin-bottom: 2rem;
+        color: #444;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
     }
 
-    /* STRIPE CHECKOUT BUTTON */
-    .btn-stripe-checkout {
+    .philanthropy-notice i {
+        color: #ff6b6b;
+        margin-top: 3px;
+    }
+
+    /* BUY BUTTON */
+    .btn-primary-buy {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,26 +232,51 @@ const schemaMarkup = JSON.stringify({
         transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .btn-stripe-checkout:hover {
+    .btn-primary-buy:hover {
         background: #000000;
         transform: translateY(-2px);
     }
 
-    /* SHIPPING TEXT */
-    .shipping-included-note {
+    /* SHIPPING INFO */
+    .shipping-info {
         margin-top: 1rem;
         color: #777;
         font-size: 0.8rem;
-        line-height: 1.4;
+        text-align: center;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         gap: 6px;
     }
 
-    .shipping-included-note i {
-        margin-top: 3px;
+    .shipping-info i {
         color: #4facfe;
+    }
+
+    /* MOBILE RESPONSIVE DESIGN */
+    /* Transforms the horizontal card into a standard vertical card on smaller screens */
+    @media (max-width: 768px) {
+        .product-grid {
+            grid-template-columns: 1fr; /* 1 column on mobile */
+        }
+
+        .product-card-horizontal {
+            flex-direction: column; /* Stacks image on top of text */
+        }
+
+        .card-image-box {
+            flex: auto;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Maintains the square shape of the image on mobile */
+        }
+
+        .card-content-box {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+        }
     }
 </style>
 
